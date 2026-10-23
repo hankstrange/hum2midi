@@ -1,5 +1,5 @@
 // v3: never cache/serve opaque or non-OK responses; old v2 caches are deleted on activate.
-const V = 'v4', C = 'hum2midi-' + V, SAMPLES = 'hum2midi-samples-' + V;
+const V = 'v5', C = 'hum2midi-' + V, SAMPLES = 'hum2midi-samples-v4'; // v5: HumBox rename (samples cache unchanged)
 self.addEventListener('install', e => { e.waitUntil(caches.open(C).then(c => c.addAll(['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './model/model.json', './model/group1-shard1of1.bin']))); self.skipWaiting(); });
 self.addEventListener('activate', e => e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== C && k !== SAMPLES).map(k => caches.delete(k)))).then(() => self.clients.claim())));
 const good = r => r && r.ok && r.type !== 'opaque' && r.status === 200;
