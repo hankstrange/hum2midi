@@ -3,6 +3,17 @@
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="HumBox"><meta name="application-name" content="HumBox"><meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="theme-color" content="#14161c">
 <link rel="icon" type="image/png" href="./icons/icon-192.png"><link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" href="./icons/icon-180.png">
-<title>HumBox</title>  <script type="module" crossorigin src="./assets/index-D7z_hqep.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-CtwALQPB.css">
-</head><body><div id="app"></div></body></html>
+<link rel="apple-touch-startup-image" href="./splash-1179x2556.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3)">
+<link rel="apple-touch-startup-image" href="./splash-1179x2556.jpg">
+<style>#splash{z-index:9999;cursor:pointer;background:radial-gradient(80% 34% at 50% 47%,#313035 0%,#2c2b30 60%,#252429 100%);justify-content:center;align-items:center;transition:opacity 1.5s ease-out;display:flex;position:fixed;inset:0}#splash img{-webkit-mask-composite:source-in;width:min(86vw,62vh,520px);height:auto;display:block;-webkit-mask-image:linear-gradient(90deg,#0000,#000 15% 85%,#0000),linear-gradient(#0000,#000 10% 90%,#0000);mask-image:linear-gradient(90deg,#0000,#000 15% 85%,#0000),linear-gradient(#0000,#000 10% 90%,#0000);-webkit-mask-composite:source-in;mask-composite:intersect}#splash.out{opacity:0}</style>
+<title>HumBox</title>  <script type="module" crossorigin src="./assets/index-aWJJlYyd.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BVKGHj7C.css">
+</head><body><div id="splash" role="img" aria-label="HumBox"><img src="./splash.jpg" alt="HumBox"></div>
+<script>(function(){var s=document.getElementById('splash'),q=location.search;
+// Cold launch only (this HTML only runs on a cold start). Headless debug runs skip it unless &splash=1.
+if(/debug=/.test(q)&&!/splash=1/.test(q)){s.remove();return;}
+var gone=false;function done(quick){if(gone)return;gone=true;window.__splash.fadedAt=Date.now();window.__splash.quick=!!quick;s.style.pointerEvents='none';if(quick)s.style.transitionDuration='0.3s';var rm=function(){if(s.parentNode){s.remove();window.__splash.removedAt=Date.now();}};s.addEventListener('transitionend',rm,{once:true});setTimeout(rm,(quick?300:1500)+400);requestAnimationFrame(function(){s.classList.add('out');});}
+// Hold fully visible 2.75 s, then 1.5 s ease-out opacity fade into the UI (no cut); element removed on transitionend.
+window.__splash={shownAt:Date.now(),done:done};setTimeout(done,2750);
+// A tap skips it and is passed to the control underneath (same gesture, so REC/mic and audio unlock still work).
+s.addEventListener('click',function(e){done(true);var el=document.elementFromPoint(e.clientX,e.clientY);var b=el&&el.closest&&el.closest('button,[role=slider],select,input');if(b&&b!==s){b.click&&b.click();}});})();</script><div id="app"></div></body></html>
